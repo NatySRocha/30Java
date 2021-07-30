@@ -4,16 +4,26 @@ programa
 	funcao inicio ()
 	{
 	
-	
-	 	inteiro x, soma = 0
+
+	 	inteiro matriz [3] [3], l, c, soma = 0, somaDiagonalPrincipal = 0
+	 
+	 	para (l = 0; l <3; l ++) {
+	 		para (c = 0; c <3; c ++) {
+	 			escreva ("Digite o valor para matriz [", l, "] [", c, "] =")
+	 			leia (matriz [l] [c])
+
+	 			soma = soma + matriz [l] [c]
+	 			se (l == c) {
+	 				somaDiagonalPrincipal = somaDiagonalPrincipal + matriz [l] [c]
+	 			}
+	 		}
+	 	}
+		
+		
+	 	escreva ("A soma dos elementos é:", soma)
+	 	escreva ("\nA soma dos elementos da diagonal principal é:", somaDiagonalPrincipal)
 	 	
-		para (x = 1; x <= 500; x ++) {
-			se ((x% 2) == 1 e (x% 3) == 0) {
-				soma = soma + x
-			}					
-		}
-		escreva ("\nA soma dos valores é:", soma)
-	
+	 	
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -21,7 +31,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 181; 
+ * @POSICAO-CURSOR = 469; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
