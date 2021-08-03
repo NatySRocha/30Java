@@ -26,26 +26,7 @@ public class Exercicio1 {
       
       totalDias = (anos * 365) + (meses * 30) + dias;
     		  System.out.println("Total de dias:" + totalDias);
-		/*
-		 * / *
-		 * Faça um sistema que leia a idade de uma pessoa expressa em anos, meses e dias e mostre-a expressa apenas em dias. 
-
-		 * /
-		inteiro anos
-		inteiro meses
-		inteiro dias
-		inteiro totalDias 
-
-		escreva ("digite o numero de anos:")
-          leia (anos)
-		escreva ("digite o numero de meses:")
-	     leia (meses)
-		escreva ("digite o numero de dias:")
-		leia (dias)
-		totalDias = (anos * 365) + (meses * 30) + dias
-		escreva ("Total de dias:" + totalDias)
-
-		 */
+		
 
 	}
 
