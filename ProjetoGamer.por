@@ -73,10 +73,13 @@ programa
 							escreva("\nDigite a quantidade que deseja: \n")
 							leia(qntd)
 					}
+					
 					enquanto (qntd < 1 ou qntd > 10) {
-								escreva("\nQuantidade indisponivel, escreva uma quantidade acima de 0 e abaixo de 10 unidade: ")
+						para  (inteiro g = 0; g < 1; g++){
+								escreva("\nQuantidade indisponivel, escreva uma quantidade acima de 0 e abaixo de" + " " + unidades[g]+ " "+ "unidade: ")
 							 	leia(qntd)
 							}
+					}
 				
 						// Caso a quantidade escolhida seja menor ou igual a quantidade de unidades em estoque,
 						// adicionar a quantidade à compra e subtrair a quantidade das unidades em estoque
@@ -193,7 +196,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 6087; 
+ * @POSICAO-CURSOR = 6166; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
