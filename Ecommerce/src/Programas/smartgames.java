@@ -1,60 +1,90 @@
-package Classes;
-public class smartgames;
-importar  Classes.Celulares ;
-import  Classes.Produto ;
-import  Classes.Jogos ;
+package Programas;
 
-import  java.util.ArrayList ;
-import  java.util.List ;
-import  java.util.Scanner ;
+import java.util.*;
+import Classes.*;
 
+public class smartgames {
+	public static void main(String[] args) {
 
-public  class  SmartGamer {
-    public  static  void  main ( String [] args ) {
-        String auxProd;
-       int x =  0 ;
-       pos int =  - 1 ;
-       int auxProd1;
+		Scanner leia = new Scanner(System.in);
+		Loja lojaa = new Loja();
+		Carrinho carrinho = new Carrinho();
+		List<Produto> itens = new ArrayList<>();
+		double somaValorTotal = 0.0;
+		char formaDePagamento;
 
+		
 
-        Scanner leia =  novo  Scanner ( Sistema . In );
-        Lista < Produto > lista =  novo  ArrayList <> ();
-        // LISTAS A SEREM PREENCHIDAS
+		char op = 'S';
 
-        lista . ADD ( novas  Celulares ( " RogPhone 3 \ t " , 10 , " G4-2 " , 0000 . 0 ));
-        lista . adicionar ( novas  Celulares ( " LG K20 \ t     " , 10 , " G4-3 " , 0000 . 0 ));
-        lista . adicionar ( novas  Celulares ( " Galaxy S10 \ t " , 10 , " G4-4 " , 0000 . 0 ));
-        lista . adicionar ( novas  Celulares ( " Iphone X \ t   " , 10 , " G4-5 " , 0000 . 00 ));
-        lista . adicionar ( nova  Jogos ( " TheWitcher \ t " , 10 , " G4-6 " , 0000 . 0 , " Galaxy 1.5 " ));
-        lista . adicionar ( nova  Jogos ( " rDR2 \ t       " , 10 , " G4-7 " , 0000 . 0 , " Galaxy 1.5 " ));
-        lista . adicionar ( nova  Jogos ( " GTA5 \ t       " , 10 , " G4-8 " , 0000 . 0 , " Galaxy 1.5 " ));
-        lista . adicionar ( nova  Jogos ( " undertale \ t  " , 10 , " G4-9 " , 0000 . 0 , " Galaxy 1.5 " ));
-        lista . adicionar ( nova  Jogos ( " inFamous \ t   " , 10 , " G4-10 " , 0000 . 0 , " Galaxy 1.5 " ));
+		itens.add(new Produto("iPhone 12 Pro", "G01", 5000.0, 10));
+		itens.add(new Pruduto("Galaxy S21", "G02", 5000.0, 10));
+		itens.add(new Pruduto("iPhone 12", "G03", 4800.0, 10));
+		itens.add(new Pruduto("Galaxy Note 20 Ultra", "G04", 3700.0, 10));
+		itens.add(new Pruduto("iPhone 11 Pro Max", "G05", 3500.0, 10));
+		itens.add(new Pruduto("Mortal Kombat", "G06", 90.0, 10));
+		itens.add(new Pruduto("Crash Bandicoot", "G07", 87.0, 10));
+		itens.add(new Pruduto("God of War", "G08", 40.0, 10));
+		itens.add(new Pruduto("RESIDENT EVIL", "G09", 58.0, 10));
+		itens.add(new Pruduto("The Last Of Us", "G10", 38.0, 10));
 
+		do {
+			lojaa.apresentacao();
+			System.out.printf("Deseja Fazer compras?[S/N] ");
+			op = leia.next().toUpperCase().charAt(0);
+			if (op == 'S') {
+				do {
+					lojaa.apresentacaoLoja();
+					for (Pruduto x : itens) {
+						System.out.printf("%s \t %.2f   \t %d      %s\n", x.getCodigo(), x.getValor(), x.getEstoque(),
+								x.getNome());
+					}
+					carrinho.vemCarrinho();
 
-        // MOSTRAR NA TELA O CLIENTE QUER
-        Sistema . para fora . println ( " COD \ t \ t PRODUTO \ t \ t \ t VALOR \ t \ t ESTOQUE " );
+					System.out.printf("\nInforme o codigo do produto: ");
+					String cod = leia.next().toUpperCase();
+					for (Pruduto i : itens) {
+						if (cod.equals(i.getCodigo())) {
+							System.out.printf("Informe a quantidade desejada de %s: ", i.getNome());
+							int quant = leia.nextInt();
+							if (quant > 0 && quant <= i.getEstoque()) {
+								carrinho.entraCarrinho(i.getNome(), cod, i.getValor(), quant);
+								somaValorTotal += (quant * i.getValor());
+								System.out.println("Total: R$ " + somaValorTotal);
+								i.retiraEstoque(quant);
 
-        para ( PRODUTO artigo : Lista) {
-            Sistema . para fora . println (item . getCodigo () + " \ t " + item . getProduto () + " \ t " + item . getValor () + " \ t \ t \ t " + item . getEstoque ());
-        }
-        Sistema . para fora . println ( " Digite o código do produto: " );
-        auxProd = leia . próximo () . toUpperCase ();
+							} else {
+								System.out.println("Estoque indisponível");
+								
+							}
 
+						}
+					}
+					System.out.print("\nDeseja continuar comprando? [S/N]");
+					op = leia.next().toUpperCase().charAt(0);
 
-        para (x =  0 ; x < lista . tamanho (); x ++ ) {
-            if (lista . get (x) . getCodigo () . equals (auxProd)) {
-                pos = x;
-                pausa ;
-            }
-        }
-        Sistema . para fora . printf ( " % s \ t % .2f \ t % d \ t % s \ n " , lista . get (pos) . getCodigo (), lista . get (pos) . getValor (), lista . get (pos) . getEstoque (), lista . get (pos) . getProduto ());
-    if (pos > = 0 ) {
-        Sistema . para fora . println ( " Produto selecionado: " );
-        Sistema . para fora . println ( " COD \ t \ t PRODUTO \ t \ t \ t VALOR \ t \ t ESTOQUE " );
-        Sistema . para fora . printf ( " % s \ t % .2f \ t % d \ t % s \ n " , lista . get (pos) . getCodigo (), lista . get (pos) . getValor (), lista . get (pos) . getEstoque (), lista . get (pos) . getEstoque ());
-        Sistema . para fora . println ( " Informe a quantidade necessária: " );
-        int auxQtde = leia . nextInt ();
-    }
-    }
+				} while (op == 'S'); 
+
+				do {
+				lojaa.menuPagamento();
+				formaDePagamento = leia.next().charAt(0);
+				} while (formaDePagamento != '1' && formaDePagamento != '2'  && formaDePagamento != '3');
+				
+				System.out.printf("Os produtos abaixo foram adicionados no carrinho ");
+				carrinho.vemCarrinho();
+				lojaa.formaDePagamento(formaDePagamento, somaValorTotal);
+				carrinho.limpar();
+				
+				System.out.printf("\nDeseja realizar novas compras?[S/N] ");
+				op = leia.next().toUpperCase().charAt(0);
+				
+			
+			}
+		} while (op == 'S');
+		
+			System.out.println("             Obrigado por comprar na Connect!!");		
+			System.out.println("Para saber mais sobre nossos produtos, visite nosso site Connect.com.br ");
+			System.out.println("                        Ate Breve!");
+	}
+
 }
