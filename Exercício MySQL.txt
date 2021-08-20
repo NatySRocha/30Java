@@ -1,0 +1,57 @@
+CREATE  DATABASE  db_generation_game_online ;
+USE db_generation_game_online;
+
+CRIAR  TABELA  tb_classe (
+    id INT AUTO_INCREMENT,
+    CHAVE PRIMÁRIA (id),
+    nome VARCHAR ( 20 ) NÃO NULO ,
+    evolucoes INT  NOT NULL ,
+    tipo VARCHAR ( 15 ) NÃO NULO
+) MOTOR = INNODB;
+
+CRIAR  TABELA  tb_personagem (
+    id INT AUTO_INCREMENT,
+    CHAVE PRIMÁRIA (id),
+    nome VARCHAR ( 50 ) NÃO NULO ,
+    ataque INT  NOT NULL ,
+    defesa INT  NOT NULL ,
+    Sabedoria INT  NOT NULL ,
+    velocidade INT  NÃO NULO ,
+    nivel INT  NOT NULL ,
+    id_classe INT  NOT NULL ,
+    CHAVE ESTRANGEIRA (id_classe)
+        REFERÊNCIAS tb_classe (id)
+) MOTOR = INNODB;
+
+INSERT INTO tb_classe (nome, evolucoes, tipo) VALORES ( " Cavaleiro " , 4 , " Humano " );
+INSERT INTO tb_classe (nome, evolucoes, tipo) VALORES ( " Magos " , 7 , " Ancião " );
+INSERT INTO tb_classe (nome, evolucoes, tipo) VALUES ( " Arqueiro " , 3 , " Elfo " );
+INSERT INTO tb_classe (nome, evolucoes, tipo) VALUES ( " Assassino " , 6 , " Humano " );
+INSERT INTO tb_classe (nome, evolucoes, tipo) VALORES ( " Ladino " , 5 , " Anão " );
+
+INSERIR EM tb_personagem (nome, ataque, defesa, sabedoria, velocidade, nivel, id_classe) VALORES ( " Aisha " , 1000 , 1000 , 3000 , 800 , 50 , 2 );
+INSERIR EM tb_personagem (nome, ataque, defesa, sabedoria, velocidade, nivel, id_classe) VALORES ( " Chung " , 4000 , 500 , 500 , 3500 , 50 , 4 );
+INSERIR EM tb_personagem (nome, ataque, defesa, sabedoria, velocidade, nivel, id_classe) VALORES ( " Elsword " , 3500 , 3500 , 500 , 1500 , 50 , 1 );
+INSERIR EM tb_personagem (nome, ataque, defesa, sabedoria, velocidade, nivel, id_classe) VALORES ( " Raven " , 3500 , 3500 , 500 , 1500 , 50 , 1 );
+INSERIR EM tb_personagem (nome, ataque, defesa, sabedoria, velocidade, nivel, id_classe) VALORES ( " Ayaya " , 3000 , 500 , 2000 , 2000 , 50 , 3 );
+INSERIR EM tb_personagem (nome, ataque, defesa, sabedoria, velocidade, nivel, id_classe) VALORES ( " Elesis " , 3000 , 3000 , 2000 , 1000 , 50 , 1 );
+INSERIR EM tb_personagem (nome, ataque, defesa, sabedoria, velocidade, nivel, id_classe) VALORES ( " Luciel " , 3000 , 500 , 2000 , 2000 , 50 , 3 );
+INSERIR EM tb_personagem (nome, ataque, defesa, sabedoria, velocidade, nivel, id_classe) VALORES ( " Eva " , 1000 , 1000 , 3000 , 800 , 50 , 2 );
+
+SELECT  *  FROM tb_personagem
+    WHERE ataque >  2000 ;
+
+SELECT  *  FROM tb_personagem
+    ONDE a defesa ENTRE 1000  E  2000 ;
+
+SELECT  *  FROM tb_personagem
+    ONDE nome LIKE  ' % c% ' ;
+
+SELECT  *  FROM tb_classe
+    INNER JOIN tb_personagem
+        ON  tb_classe . id  =  tb_personagem . id_classe ;
+
+SELECT  *  FROM tb_classe
+        INNER JOIN tb_personagem
+            ON  tb_personagem . id_classe  =  tb_classe . eu ia
+                ONDE  tb_classe . nome  =  ' Arqueiro ' ; 
